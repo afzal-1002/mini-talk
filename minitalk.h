@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 20:13:20 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/18 20:40:09 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/18 22:57:26 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 void	send_char(pid_t server_pid, unsigned char c);
 void	send_string(pid_t server_pid, char *str);
 int		ft_atoi(const char *str);
-void	handler(int sig);
+void	handler(int sig, siginfo_t *info, void *context);
 void	ft_putnbr(int num);
 
 #endif

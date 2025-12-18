@@ -6,11 +6,17 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 20:13:07 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/18 20:32:45 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/18 23:05:18 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	ack_handler(int sig)
+{
+	(void)sig;
+	write(1, "Message received by server\n", 27);
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,6 +24,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 		return (1);
+	signal(SIGUSR1, ack_handler);
 	server_pid = ft_atoi(argv[1]);
 	send_string(server_pid, argv[2]);
 	return (0);
